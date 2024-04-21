@@ -81,12 +81,12 @@ docker ps -a
 ```
 If the STATUS column has a status of Up, your server is running in the container
 ## Connecting to SQL Server
-###STEP 1
+### STEP 1
 start an interactive bash shell inside your container
 ```
 docker exec -it sql1 "bash"
 ```
-###STEP 2 
+### STEP 2 
 connect to sqlcmd using it's path
 ```
 sudo /opt/mssql-tools/bin/sqlcmd -S localhost -U <userid> -P "<YourNewStrong@Passw0rd>"
