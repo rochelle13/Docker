@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  mathapp:
+    image: ${DOCKER_REGISTRY-}mathapp
+    build:
+      context: .
+      dockerfile: MathApp/Dockerfile
+
+  sql:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql_server
+    ports: 
+      - "8081:8081"
+    environment:
+      - ACCEPT_EULA=y
+      - SA_PASSWORD= P@SSW0RD1
