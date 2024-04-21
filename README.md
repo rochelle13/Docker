@@ -61,28 +61,36 @@ RELEASE:
 
 ## Adding SQL DB to Docker
 ### STEP 1 
-Change your connection string from "Server = localhost.." to "Server = sql_server..."
+run the following query to pull the sql server container image 
+```
+docker pull mcr.microsoft.com/mssql/server:2019-latest
+```
 ### STEP 2
-Run the following line to see the image
+use the following to run the container - change details according to your code/app
 ```
-docker image ls
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" `
+   -p 1433:1433 --name sql1 --hostname sql1 `
+   -d `
+   mcr.microsoft.com/mssql/server:2019-latest
 ```
+
 ### STEP 3
-Inside your docker-compose.yml file add the following lines of code 
+run the follwing to view a list of containers 
 ```
-sql:
-    image: "mcr.microsoft.com/mssql/server:2022-latest"
-    container_name: sql_server
-    ports: 
-      - "1433:1433" 
-    environment:
-      - ACCEPT_EULA=y
-      - SA_PASSWORD= P@SSW0RD1
+docker ps -a
 ```
-### STEP 4
-Run the following command 
+If the STATUS column has a status of Up, your server is running in the container
+## Connecting to SQL Server
+###STEP 1
+start an interactive bash shell inside your container
 ```
-docker-compose up
+docker exec -it sql1 "bash"
 ```
+###STEP 2 
+connect to sqlcmd using it's path
+```
+sudo /opt/mssql-tools/bin/sqlcmd -S localhost -U <userid> -P "<YourNewStrong@Passw0rd>"
+```
+your sqlcmd command prompt should open if successful and you can begin to run queries 
 
 
