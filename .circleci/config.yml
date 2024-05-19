@@ -19,7 +19,7 @@ jobs:
           command: dotnet.exe restore
       - save_cache:
           paths:
-            - C:\Users\circleci\.nuget\packages
+            - C:\Users\lab_services_student\.nuget\packages
           key: dotnet-packages-v1-{{ checksum "MathApp/MathApp.csproj" }}
       - run:
           name: "Run Application Tests"
@@ -49,7 +49,7 @@ jobs:
     
     steps:
       - docker/build:
-          path: ./MathApp/Dockerfile        
+          path: ./Docker/MathApp       
           image: mathappdocker 
 
 workflows:
