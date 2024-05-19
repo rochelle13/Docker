@@ -47,7 +47,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - docker/build:
-          dockerfile: Dockerfile
+          dockerfile: Docker/MathApp/Dockerfile
           image: mathappdocker 
 
 workflows:
