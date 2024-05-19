@@ -47,7 +47,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - docker/build:
-          image: mcr.microsoft.com/dotnet/sdk:latest 
+          image: latest 
      
 
 workflows:
