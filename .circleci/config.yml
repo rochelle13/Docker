@@ -19,7 +19,7 @@ jobs:
           command: dotnet.exe restore
       - save_cache:
           paths:
-            - C:\Users\lab_services_student\.nuget\packages
+            - C:\Users\lab_services_student\dotnet
           key: dotnet-packages-v1-{{ checksum "MathApp/MathApp.csproj" }}
       - run:
           name: "Run Application Tests"
